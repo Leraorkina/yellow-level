@@ -1,0 +1,7 @@
+def task_2(nums):
+    for i in range(len(nums)): #Этот внешний цикл перебирает список nums от начала до конца.
+        for j in range(i + 1, len(nums)): #Этот внешний цикл перебирает список nums от начала до конца.
+            if nums[i] > nums[j]: #сравниваем
+                nums[i], nums[j] = nums[j], nums[i] #меняем местами элементы
+
+    return nums #Этот внешний цикл перебирает список nums от начала до конца.
