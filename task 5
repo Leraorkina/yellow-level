@@ -1,0 +1,30 @@
+class Solution(object):
+    def getIntersectionNode(self, headA, headB):
+        mirror_A = headA
+        mirror_B = headB
+        count_b, count_a = 0, 0
+
+        while mirror_A: #подсчет длины А
+            mirror_A = mirror_A.next
+            count_a += 1
+
+        while mirror_B: #подсчет длины В 
+            mirror_B = mirror_B.next
+            count_b += 1
+
+        if count_a > count_b: # если длина а больше b, то мы находим разницу между длиной а и b
+            count_a -= count_b
+            while count_a: # идем вперед, пока длины не будут равны
+                count_a -= 1
+                headA = headA.next
+        elif count_a < count_b: # если длина b больше a, то мы находим разницу между длиной b и a
+            count_b -= count_a
+            while count_b: # идем вперед, пока длины не будут равны
+                count_b -= 1
+                headB = headB.next
+
+        while headA != headB: # обоими идем вперед, пока они не будут равны, если не пересекаются, то в конце они оба будут равны None
+            headA = headA.next
+            headB = headB.next
+
+        return headA # возвращаем общий элемент, если его нет, то вернется None
